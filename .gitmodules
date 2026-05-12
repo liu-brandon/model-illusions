@@ -1,0 +1,3 @@
+[submodule "structure-in-motion"]
+	path = structure-in-motion
+	url = https://github.com/DrugowitschLab/structure-in-motion.git
