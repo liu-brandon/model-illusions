@@ -1,0 +1,2 @@
+VJEPA2.1
+python generate_stimulus_set.py --output_folder stimulus/vjepa2.1 --fps 8 --time 4 --resolution 384x384

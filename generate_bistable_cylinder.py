@@ -36,6 +36,7 @@ parser.add_argument("--radii",  type=float, nargs="+", default=[1.5, 1.0],
                     help="Cylinder radii, one per cylinder e.g. --radii 1.5 1.0 0.5")
 parser.add_argument("--omegas", type=float, nargs="+", default=[1.5, 1.0],
                     help="Rotation speeds (multiples of pi/2), one per cylinder")
+parser.add_argument("--resolution", type=str, default="512x512")
 args = parser.parse_args()
 
 # ── Geometry (copied verbatim from config) ────────────────────────────────────
@@ -175,7 +176,7 @@ ani = animation.FuncAnimation(
 )
 
 writer = animation.FFMpegWriter(fps=args.fps, bitrate=2000,
-                                extra_args=["-pix_fmt", "yuv420p"])
+                                extra_args=["-pix_fmt", "yuv420p", "-vf", f"scale={args.resolution}"])
 ani.save(args.out, writer=writer, dpi=args.dpi)
 plt.close(fig)
 print(f"Done. Saved to: {args.out}")
