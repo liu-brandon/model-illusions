@@ -147,7 +147,7 @@ def run_sample_inference(video_folder_path):
         torch.save(out_patch_features_hf, f"/scratch/users/liubr/model-illusions/model_response/vjepa/{video_path.name}.pt")
         print(
             f"""
-            Inference results on video:
+            Inference results on video: {video_path}
             HuggingFace output shape: {out_patch_features_hf.shape}
             """
         )
@@ -187,5 +187,5 @@ def run_sample_inference(video_folder_path):
 
 if __name__ == "__main__":
     # Run with: `python -m notebooks.vjepa2_demo`
-    run_sample_inference("stimulus/vjepa2.1")
+    run_sample_inference("/scratch/users/liubr/model-illusions/stimulus/vjepa2.1")
     # get_video("stimulus/vjepa2.1/depth_0_r_1.5_omega_0.0.mp4")

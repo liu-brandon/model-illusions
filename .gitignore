@@ -1,4 +1,6 @@
 *.mp4
 build
 *.egg-info/
-model_response/*
+*.out
+*.sh
+
