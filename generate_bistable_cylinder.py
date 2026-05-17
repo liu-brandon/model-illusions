@@ -37,6 +37,7 @@ parser.add_argument("--radii",  type=float, nargs="+", default=[1.5, 1.0],
 parser.add_argument("--omegas", type=float, nargs="+", default=[1.5, 1.0],
                     help="Rotation speeds (multiples of pi/2), one per cylinder")
 parser.add_argument("--resolution", type=str, default="512x512")
+parser.add_argument("--seed", type=int, default=42)
 args = parser.parse_args()
 
 # ── Geometry (copied verbatim from config) ────────────────────────────────────
@@ -87,7 +88,7 @@ is_outer           = R_vis == Rs[0]   # boolean mask over visible dots
 y_levels = np.linspace(-args.height / 2, args.height / 2, args.rows)
 
 # phi_tiled   = np.tile(phi_vis,   args.rows)   # shape: (rows * K_vis,)
-rng = np.random.default_rng(42)
+rng = np.random.default_rng(seed=args.seed)
 phi_tiled = np.tile(phi_vis, args.rows) + rng.uniform(0, 2 * np.pi, args.rows * len(phi_vis))
 
 R_tiled     = np.tile(R_vis,     args.rows)
